@@ -1,0 +1,81 @@
+<!-- Same phylosophy of Servlet b.coz both are use http protocol..!!
+    mhnje htpp protocol only current request cha data hold karto ..!!
+    mgh aapnla pahilya page chi value 3 rya page war pahije aasel tar aapanla session banava lagte..!!!
+    aani pahilya page chi value tyamadhi store karave lagte same phylosophy of servlet..!!
+    please revise servlet session notes..!!
+     pn jsp madhi session ha object inbuilt aahe manje aapnla manuallly servlet sarkh banvaychi garaj nahi..!!
+     That object are called implicit object..!!
+     
+ -----------------------------------------------------------------------------------------
+ pn jsp madhi session kase create kartat..??
+ --> <%@ page session="true"%> aapnala adhi ase karun tya page la sagave lagte ki mi ata session use
+ karnaar aahe manun otherwise bydefaulte te true ch aast nahi lihl taripn chalt..!!
+ 
+ session.setAttribute("fn", fname);
+ session.setAttribute("ln",lname);
+ session ha inbuilt object aahe manun aapan setAttribute hya method cha use karun tya session madhi value
+ set kart aahet session are always stored value in the form of key and value pair..!!
+ key must be unique value duplicate are allowed..!
+  ithe aapla sesion bannar b.coz aapan session vaprnyasthi true kel aahe aani session madhi kahi value pn
+  set kelya ahet..!!
+  --------------------------------------------------------------------------------------------
+  pn jsp session madhli value kas kadhhun ghyach kiva use karaych??
+  -->String fname=session.getAttribute("fn").toString();
+	 String lname=(String) session.getAttribute("ln");
+	 
+	 jas aapn setAttribute karun value set karto tasech aapn getAttribute karun valu session madhlya kadun pn
+	 ghevu shakto..!!
+	 pn session always value Object chya form madhi store karto  magh aapnala ti value String chya form 
+	 madhi pahije aasel tar aapnla conversion karav lagt..!!
+	 we can use two way to convert Object into String..!!
+	 1) String fname=session.getAttribute("fn").toString(); aapn ithe Object ch Conversion toString() method cha 
+	 use karun kel aahe..!! 
+	 2) 	 String lname=(String) session.getAttribute("ln"); aapn ithe Object Conversion Explicit TypeCasting
+	 karun kel aahe..!!
+	 
+----------------------------------------------------------------------------------------------------------
+<h2> MARKSHEET </h2>
+First Name :<%=fname %><br>
+Last Name  :<%=lname %><br>
+Percentage :<%=per %><br>
+Grade      :<%=grade %><br>
+<%= %> that tag is called expression tag..!!
+JSP मध्ये Expression Tag (<%= %>) चा उपयोग output (माहिती) थेट browser वर print करण्यासाठी होतो.
+<%= %> मध्ये जे लिहाल ते calculate होऊन लगेच browser वर दिसते.
+mhnje aapn je value yamdhi lihto ti lagech run hote aani  browser var print hote..!!
+<%=3+2%> tar aapl direct output 5 aapnla yet browser war..!!
+mhnje aapnla out.println() hi method call karun value bghyachi grj nahi..!!
+je kahi ya tag madhi aaste te lagech run honar aani tichi value pn lagech print honar ..!!
+--------------------------------------------------------------------------------------------------
+main Differenece between Servlet aand jsp session creation..!!
+jas aapn Servlet madhi HttpSession hs=new=request.getSession(true) kart hoto mhnje aapn sessssion create karat
+hoto aani tru mhnje aapn pudhchya page war use kart hoto..!!
+aani dusrya page HttpSession hs=new=request.getSession(false) karun aapn sangt hoto ki new session nako .aahe
+te execuated session aahe tech use kr new nako banvu aase aapn mant hoto servlet madhi..!!
+hs.invalidate() karun aapn session destroy pn kart hoto..!!
+---------------------------------------------------------
+pn jsp madhi     <%@ page session="true"%> karun aapn aase sangto ki session use karnar aahe aani magh 
+aapnla durya page war pn     <%@ page session="true"%> hech livave lagte jar aapnla session use 
+karaych aasel tar ..!!
+ithe aapnla all over true lihav lagto Servlet sarkh false liht nahit jsp madhi..!!
+mhnje jya page war session pahije tya <%@ page session="true"%> ha tag aasla pahije jspengine
+bydefault session madhi store keleya value ch vaprto..!!
+by default jsp madhi session ha always true aasto i.e<%@ page session="true"%>.!!
+ <%@ page session="false"%>b tya page sathi session ha object unavailable aasto. tya page war aapan sesssion
+ hya object vapru shakat nahi..!!
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+   <form method="post" action="./Page2.jsp">
+   
+   First Name:-<input type="text" name="fn" required><br>
+   Last Name:-<input type="text" name="pwd" required><br>
+    <input type="submit" value="send"> 
+   </form>
+</body>
+</html>
